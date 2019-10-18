@@ -31,7 +31,7 @@ router.post('/org/events', function (req, res, next) {
         },
         (msg) => {
           console.error(`activation failed: ${msg}`);
-          res.sendStatus(204);
+          res.status(500).send({ message: msg });
           return;
         }
       );
@@ -49,7 +49,7 @@ router.post('/org/events', function (req, res, next) {
         },
         (msg) => {
           console.error(`removing failed: ${msg}`);
-          res.sendStatus(204);
+          res.status(500).send({ message: msg });
           return;
         }
       );
