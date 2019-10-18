@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "gulp",
+    "start": "node bin/www.js",
     "test": "mocha --recursive tests",
     "test:coverage": "nyc npm tests",
     "test:unit": "mocha --recursive tests/routes",
