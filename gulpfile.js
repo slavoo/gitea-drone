@@ -11,7 +11,7 @@ gulp.task('develop', () => {
     script: 'bin/www.js',
     ext: 'js,ts',
     stdout: false,
-    ignore: ['./tests/']
+    ignore: ['./test/']
   }).on('readable', function () {
     this.stdout.on('data', (chunk) => {
       if (/^Express server listening on port/.test(chunk)) {
