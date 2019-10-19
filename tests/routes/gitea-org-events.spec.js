@@ -4,6 +4,12 @@ process.env.DRONE_TOKEN = 'dummy-token';
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let FakeDroneServer = require('../stubs/drone-mock')
+let app = require('../../app')
+
+chai.should();
+chai.use(chaiHttp);
+
+var requester = chai.request(app).keepOpen()
 
 let expectedRepos = {
     'owner/testrepo': {
@@ -14,12 +20,7 @@ let expectedRepos = {
 
 new FakeDroneServer(expectedRepos);
 
-let app = require('../../app')
-chai.should();
-chai.use(chaiHttp);
-var requester = chai.request(app).keepOpen()
-
-describe('gitea-org-events-v1', function () {
+describe('gitea-org-events', function () {
     it('should ignore when event type is not defined', done => {
         requester
             .post('/gitea/api/v1/org/events')
@@ -88,4 +89,17 @@ describe('gitea-org-events-v1', function () {
                 done();
             });
     });
+
+    it('should return status ok when healthz is called', done => {
+        requester
+            .get('/_healthz')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.should.be.json;
+
+                res.body.status.should.be.equal('ok');
+                done();
+            });
+    });
+
 });
