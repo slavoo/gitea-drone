@@ -101,5 +101,4 @@ describe('gitea-org-events', function () {
                 done();
             });
     });
-
 });

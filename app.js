@@ -1,11 +1,11 @@
 const express = require('express');
 const logger = require('morgan');
-
+const { morgan } = require('./config');
 var routes = require('./routes');
 
 const app = express();
 
-app.use(logger('dev'));
+app.use(logger(morgan.format));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
