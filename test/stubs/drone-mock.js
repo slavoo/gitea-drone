@@ -9,12 +9,12 @@ let FakeDroneServer = function (repoStats) {
         app.post('/api/repos/' + repo, (req, res) => {
             repoStats[repo].postCount++;
             res.send({ resp: 'fake' });
-        })
+        });
 
         app.delete('/api/repos/' + repo, (req, res) => {
             repoStats[repo].deleteCount++;
             res.send('response doesn\'t matter at this point!');
-        })
+        });
     }
 
     app.post('/api/user/repos', (req, res) => {
