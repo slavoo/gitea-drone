@@ -13,20 +13,18 @@
         "esModuleInterop": true,
         "noImplicitAny": true,
         "moduleResolution": "node",
-        "sourceMap": false,
+        "sourceMap": true,
+        "allowJs": true,
         "outDir": "dist",
-        "baseUrl": ".",
+        "baseUrl": "src",
         "paths": {
             "*": [
                 "node_modules/*",
-                "types/*"
+                "src/types/*"
             ]
         }
     },
     "include": [
-        "**/*"
-    ],
-    "exclude": [
-        "dist"
+        "src/**/*"
     ]
 }

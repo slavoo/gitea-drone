@@ -5,6 +5,8 @@
   "main": "src/app/app.js",
   "scripts": {
     "start": "node src/app/bin/www.js",
+    "build": "gulp compile",
+    "develop": "gulp",
     "test": "mocha --recursive src/test",
     "test:coverage": "nyc npm src/test"
   },
@@ -20,11 +22,11 @@
     "chai-http": "^4.3.0",
     "debug": "^4.1.1",
     "gulp": "^4.0.2",
+    "gulp-file-cache": "0.0.1",
     "gulp-livereload": "^4.0.2",
     "gulp-nodemon": "^2.0.2",
-    "gulp-plumber": "^1.0.0",
     "gulp-typescript": "^5.0.1",
-    "mocha": "^6.2.1",
+    "mocha": "^6.2.2",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2",
     "tslint": "^5.20.0",
