@@ -4,7 +4,7 @@ process.env.DRONE_TOKEN = 'dummy-token';
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let FakeDroneServer = require('../stubs/drone-mock')
-let app = require('../../app')
+let app = require('../../app/app')
 
 chai.should();
 chai.use(chaiHttp);

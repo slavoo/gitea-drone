@@ -8,10 +8,10 @@ const livereload = require('gulp-livereload');
 gulp.task('develop', () => {
   livereload.listen();
   nodemon({
-    script: 'bin/www.js',
+    script: 'src/app/bin/www.js',
     ext: 'js,ts',
     stdout: false,
-    ignore: ['./test/']
+    ignore: ['./src/test/']
   }).on('readable', function () {
     this.stdout.on('data', (chunk) => {
       if (/^Express server listening on port/.test(chunk)) {

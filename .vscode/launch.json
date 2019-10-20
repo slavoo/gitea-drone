@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/app.js",
+            "program": "${workspaceFolder}/src/app/app.js",
             "env": {
                 "DRONE_URL": "https://ci.genis.slavoo.local",
                 "DRONE_TOKEN": "C9isOU5zIj0WlRGDNxHaeGmFuGPDkbew"
