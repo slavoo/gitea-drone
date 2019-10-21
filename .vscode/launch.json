@@ -8,11 +8,16 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/src/app/app.js",
+            "program": "${workspaceFolder}/src/app/bin/www.ts",
             "env": {
                 "DRONE_URL": "https://ci.genis.slavoo.local",
-                "DRONE_TOKEN": "C9isOU5zIj0WlRGDNxHaeGmFuGPDkbew"
-            }
+                "DRONE_TOKEN": "C9isOU5zIj0WlRGDNxHaeGmFuGPDkbew",
+                "NODE_EXTRA_CA_CERTS": "../ca-certificates.crt"
+            },
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ]
         }
     ]
 }

@@ -1,4 +1,5 @@
 let config = {
+    PORT: process.env.PORT ? +process.env.PORT : 3000,
     DRONE_URL: process.env.DRONE_URL,
     DRONE_TOKEN: process.env.DRONE_TOKEN,
     morgan: {

@@ -15,6 +15,7 @@
         "moduleResolution": "node",
         "sourceMap": true,
         "allowJs": true,
+        "experimentalDecorators": true,
         "outDir": "dist",
         "baseUrl": "src",
         "paths": {
