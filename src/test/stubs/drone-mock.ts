@@ -1,4 +1,5 @@
 import express from 'express';
+import { Server } from 'http';
 
 export enum HttpAction {
     Post = "POST",
@@ -8,6 +9,7 @@ export enum HttpAction {
 export class FakeDroneServer {
 
     app = express();
+    runningApp: Server;
 
     callbacks: {
         [id: string]:
@@ -75,6 +77,16 @@ export class FakeDroneServer {
     }
 
     public start(port: number): void {
-        this.app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+        if (this.runningApp) throw new Error("Server is already running.");
+
+        this.runningApp = this.app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+    }
+
+    public close() {
+        if (!this.runningApp) throw new Error("Server is not running.");
+
+        this.runningApp.close();
+
+        this.runningApp = null;
     }
 }

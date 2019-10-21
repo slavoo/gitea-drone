@@ -3,22 +3,31 @@ process.env.DRONE_TOKEN = 'dummy-token';
 
 import chai from 'chai';
 import chaiHttp = require('chai-http');
+chai.should();
+chai.use(chaiHttp);
 
 import { FakeDroneServer, HttpAction } from '../stubs/drone-mock';
 import { AppServer } from '../../app/app';
 import { Request, Response } from 'express';
 
-let app = new AppServer().innerApp;
-
-chai.should();
-chai.use(chaiHttp);
-
-var requester = chai.request(app).keepOpen()
-
-let droneApiMock = new FakeDroneServer();
-droneApiMock.start(5555);
-
 describe('gitea-org-events', function () {
+
+    let requester: ChaiHttp.Agent;
+    let droneApiMock: FakeDroneServer;
+
+    this.beforeAll(() => {
+        let app = new AppServer().innerApp;
+
+        requester = chai.request(app).keepOpen()
+
+        droneApiMock = new FakeDroneServer();
+        droneApiMock.start(5555);
+    });
+
+    this.afterAll(() => {
+        droneApiMock.close();
+    });
+
     it('should ignore when event type is not defined', done => {
         requester
             .post('/api/v1/listeners/gitea-web-hook')

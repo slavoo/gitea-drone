@@ -6,15 +6,13 @@
   "scripts": {
     "start": "node src/app/bin/www.js",
     "build": "gulp compile",
-    "develop": "gulp",
-    "test": "mocha --recursive src/test",
-    "test:coverage": "nyc npm src/test"
+    "develop": "nodemon",
+    "test": "mocha --exit",
+    "test:coverage": "nyc mocha --recursive src/test --exit"
   },
   "dependencies": {
     "@overnightjs/core": "^1.6.9",
-    "cookie-parser": "^1.3.3",
     "express": "^4.13.3",
-    "lodash": "^4.17.15",
     "morgan": "^1.6.1",
     "request": "^2.88.0"
   },
@@ -38,5 +36,12 @@
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.4"
+  },
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "spec": "src/**/*.spec.ts",
+    "require": "ts-node/register"
   }
 }
