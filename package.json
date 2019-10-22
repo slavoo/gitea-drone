@@ -5,13 +5,14 @@
   "main": "src/app/app.js",
   "scripts": {
     "start": "node src/app/bin/www.js",
-    "build": "gulp compile",
+    "build:prod": "tsc --sourceMap false",
     "develop": "nodemon",
     "test": "mocha --exit",
     "test:coverage": "nyc mocha --recursive src/test --exit"
   },
   "dependencies": {
     "@overnightjs/core": "^1.6.9",
+    "dotenv": "^8.2.0",
     "express": "^4.13.3",
     "morgan": "^1.6.1",
     "request": "^2.88.0"

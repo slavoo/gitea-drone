@@ -6,14 +6,15 @@ ENV DRONE_TOKEN <TOKEN>
 WORKDIR /build
 
 COPY ["package.json", "package-lock.json*", "tsconfig.json", "./"]
-COPY src/app src/app
+
+COPY ["src", "src"]
 
 RUN npm install --silent && \
-    node node_modules/typescript/bin/tsc --sourceMap false && \
-    ls -l && \
+    npm test && \
+    npm run-script build:prod && \
     mkdir /app && \
     mv package.json package-lock.json dist /app/ && \
-    rm -rf node_modules
+    rm -rf /build
 
 WORKDIR /app
 
@@ -23,4 +24,4 @@ RUN npm install --silent
 
 ENV PORT 3000
 EXPOSE 3000
-CMD node dist/app/bin/www.js
+CMD npm start

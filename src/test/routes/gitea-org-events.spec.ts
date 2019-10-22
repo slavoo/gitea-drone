@@ -10,12 +10,12 @@ import { FakeDroneServer, HttpAction } from '../stubs/drone-mock';
 import { AppServer } from '../../app/app';
 import { Request, Response } from 'express';
 
-describe('gitea-org-events', function () {
+describe('gitea-org-events', () => {
 
     let requester: ChaiHttp.Agent;
     let droneApiMock: FakeDroneServer;
 
-    this.beforeAll(() => {
+    before(() => {
         let app = new AppServer().innerApp;
 
         requester = chai.request(app).keepOpen()
@@ -24,7 +24,8 @@ describe('gitea-org-events', function () {
         droneApiMock.start(5555);
     });
 
-    this.afterAll(() => {
+
+    after(() => {
         droneApiMock.close();
     });
 

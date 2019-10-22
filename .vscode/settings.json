@@ -2,5 +2,7 @@
     "mocha.files.glob": "src/test/**/*.ts",
     "mocha.requires": [
         "ts-node/register"
-    ]
+    ],
+    "editor.tabSize": 2,
+    "files.insertFinalNewline": true
 }
