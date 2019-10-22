@@ -1,8 +1,22 @@
 {
-    "mocha.files.glob": "src/test/**/*.ts",
+    "mocha.files.glob": "src/**/*.spec.ts",
     "mocha.requires": [
         "ts-node/register"
     ],
     "editor.tabSize": 2,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "files.exclude": {
+        ".nyc_output": true,
+        "**/.DS_Store": true,
+        "**/.editorconfig": true,
+        "**/.git": true,
+        "**/.gitignore": true,
+        "**/.hg": true,
+        "**/.svn": true,
+        "**/.vscode": true,
+        "**/CVS": true,
+        "**/obj": true,
+        "**/dist": true,
+        "**/coverage": true
+    }
 }
