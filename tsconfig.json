@@ -26,6 +26,7 @@
         }
     },
     "include": [
-        "src/app/*"
+        "src/app/*",
+        "src/app/bin/gitea-drone.ts"
     ]
 }

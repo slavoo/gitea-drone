@@ -7,7 +7,7 @@ chai.should();
 chai.use(chaiHttp);
 
 import { FakeDroneServer, HttpAction } from '../stubs/drone-mock';
-import { AppServer } from '../../app/app';
+import { AppServer } from '../../app/app-server';
 import { Request, Response } from 'express';
 
 describe('gitea-org-events', () => {
