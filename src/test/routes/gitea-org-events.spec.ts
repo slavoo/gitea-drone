@@ -31,7 +31,7 @@ describe('gitea-org-events', () => {
 
     it('should ignore when event type is not defined', done => {
         requester
-            .post('/api/v1/listeners/gitea-web-hook')
+            .post('/api/v1/sources/gitea/web-hook-events')
             .end((err, res) => {
                 res.should.have.status(200);
                 res.should.be.json;
@@ -43,7 +43,7 @@ describe('gitea-org-events', () => {
 
     it('should ignore when event is repository and action is not defined', done => {
         requester
-            .post('/api/v1/listeners/gitea-web-hook')
+            .post('/api/v1/sources/gitea/web-hook-events')
             .set('x-gitea-event', 'repository')
             .end((err, res) => {
                 res.should.have.status(200);
@@ -65,7 +65,7 @@ describe('gitea-org-events', () => {
         });
 
         requester
-            .post('/api/v1/listeners/gitea-web-hook')
+            .post('/api/v1/sources/gitea/web-hook-events')
             .set('x-gitea-event', 'repository')
             .send({
                 action: 'created',
@@ -90,7 +90,7 @@ describe('gitea-org-events', () => {
         });
 
         requester
-            .post('/api/v1/listeners/gitea-web-hook')
+            .post('/api/v1/sources/gitea/web-hook-events')
             .set('x-gitea-event', 'repository')
             .send({
                 action: 'deleted',

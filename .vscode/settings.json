@@ -3,6 +3,9 @@
     "mocha.requires": [
         "ts-node/register"
     ],
+    "mocha.options": {
+        "exit": true
+    },
     "editor.tabSize": 2,
     "files.insertFinalNewline": true,
     "files.exclude": {

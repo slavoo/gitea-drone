@@ -2,13 +2,13 @@ import { Controller, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
 import { DroneClient } from '../clients/drone-client';
 
-@Controller('api/v1/listeners/gitea-web-hook')
+@Controller('api/v1/sources/gitea/web-hook-events')
 export class GiteaWebHookDispatcher {
     constructor(private droneClient: DroneClient = new DroneClient()) {
     }
 
     @Post()
-    private received(req: Request, res: Response) {
+    private post(req: Request, res: Response) {
         let event = req.header('x-gitea-event');
 
         if (event !== 'repository') {
