@@ -2,6 +2,16 @@
   "name": "gitea-drone",
   "version": "0.0.1",
   "private": true,
+  "author": {
+    "name": "Slawomir Biegluk"
+  },
+  "bugs": {
+    "url": "https://github.com/slavoo/gitea-drone"
+  },
+  "description": "Prototype of integration between drone and gitea... [obsolete]",
+  "homepage": "https://github.com/slavoo/gitea-drone",
+  "license": "BSD",
+  "repository": "gitub:slavoo/gitea-drone",
   "main": "src/app/bin/gitea-drone.ts",
   "scripts": {
     "start": "node dist/bin/gitea-drone.js",
