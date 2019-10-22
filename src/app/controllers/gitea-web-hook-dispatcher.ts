@@ -9,7 +9,7 @@ export class GiteaWebHookDispatcher {
 
     @Post()
     private post(req: Request, res: Response) {
-        let event = req.header('x-gitea-event');
+        const event = req.header('x-gitea-event');
 
         if (event !== 'repository') {
             console.debug(`unsupported event type: ${event}`);
@@ -17,9 +17,9 @@ export class GiteaWebHookDispatcher {
             return;
         }
 
-        let action = req.body.action;
+        const action = req.body.action;
 
-        let fullName = req.body && req.body.repository && req.body.repository.full_name;
+        const fullName = req.body && req.body.repository && req.body.repository.full_name;
 
         switch (action) {
             case 'created':

@@ -1,7 +1,6 @@
 import * as request from 'request';
-
-const url = require('url');
-const { DRONE_URL, DRONE_TOKEN } = require('../config');
+import url from 'url';
+import { DRONE_URL, DRONE_TOKEN } from '../config';
 
 export class DroneClient {
 

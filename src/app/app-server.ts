@@ -7,6 +7,10 @@ import { Healthz } from './controllers/healthz';
 
 export class AppServer extends Server {
 
+    public get innerApp(): any {
+        return this.app;
+    }
+
     constructor() {
         super(process.env.NODE_ENV === 'development'); // setting showLogs to true
         this.app.use(express.json());
@@ -16,17 +20,13 @@ export class AppServer extends Server {
         this.setupControllers();
     }
 
-    private setupControllers(): void {
-        super.addControllers([new GiteaWebHookDispatcher(), new Healthz()]);
-    }
-
     public start(port: number): void {
         this.app.listen(port, () => {
             console.log('Server listening on port: ' + port);
         })
     }
 
-    public get innerApp(): any {
-        return this.app;
+    private setupControllers(): void {
+        super.addControllers([new GiteaWebHookDispatcher(), new Healthz()]);
     }
 }

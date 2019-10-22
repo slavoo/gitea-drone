@@ -16,7 +16,7 @@ describe('gitea-org-events', () => {
     let droneApiMock: FakeDroneServer;
 
     before(() => {
-        let app = new AppServer().innerApp;
+        const app = new AppServer().innerApp;
 
         requester = chai.request(app).keepOpen()
 
@@ -34,6 +34,7 @@ describe('gitea-org-events', () => {
             .post('/api/v1/sources/gitea/web-hook-events')
             .end((err, res) => {
                 res.should.have.status(200);
+                // tslint:disable-next-line: no-unused-expression
                 res.should.be.json;
                 res.body.message.should.equal("unsupported event type: undefined");
                 Object.keys(res.body).length.should.equal(1);
@@ -47,6 +48,7 @@ describe('gitea-org-events', () => {
             .set('x-gitea-event', 'repository')
             .end((err, res) => {
                 res.should.have.status(200);
+                // tslint:disable-next-line: no-unused-expression
                 res.should.be.json;
                 res.body.message.should.equal("unsupported repository action: undefined");
                 Object.keys(res.body).length.should.equal(1);
@@ -56,8 +58,8 @@ describe('gitea-org-events', () => {
 
     it('should call drone when event is repository and action is created', done => {
 
-        let giteaOwner = 'test1';
-        let repoName = 'repo-created';
+        const giteaOwner = 'test1';
+        const repoName = 'repo-created';
 
         droneApiMock.expect(HttpAction.Post, giteaOwner, repoName, (req: Request, res: Response) => {
             req.headers.authorization.should.equal(`Bearer ${process.env.DRONE_TOKEN}`);
@@ -81,8 +83,8 @@ describe('gitea-org-events', () => {
     });
 
     it('should call drone when event is "repository" and action is "deleted"', done => {
-        let giteaOwner = 'test2';
-        let repoName = 'repo-deleted';
+        const giteaOwner = 'test2';
+        const repoName = 'repo-deleted';
 
         droneApiMock.expect(HttpAction.Delete, giteaOwner, repoName, (req: Request, res: Response) => {
             req.headers.authorization.should.equal(`Bearer ${process.env.DRONE_TOKEN}`);
@@ -110,6 +112,8 @@ describe('gitea-org-events', () => {
             .get('/_healthz')
             .end((err, res) => {
                 res.should.have.status(200);
+
+                // tslint:disable-next-line: no-unused-expression
                 res.should.be.json;
 
                 res.body.status.should.be.equal('ok');

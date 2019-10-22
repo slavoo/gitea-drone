@@ -15,6 +15,7 @@
   "main": "src/app/bin/gitea-drone.ts",
   "scripts": {
     "start": "node dist/bin/gitea-drone.js",
+    "tslint": "tslint -c tslint.json 'src/**/*'",
     "build:prod": "tsc --sourceMap false",
     "develop": "nodemon",
     "clean": "rm -rf dist",

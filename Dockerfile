@@ -5,12 +5,13 @@ FROM node:10.13-alpine
 
 WORKDIR /build
 
-COPY ["package.json", "package-lock.json*", "tsconfig.json", "./"]
+COPY ["package.json", "package-lock.json*", "tsconfig.json", "tslint.json", "./"]
 
 COPY ["src", "src"]
 
 RUN npm install --silent && \
     npm run test:coverage && \
+    npm run tslint && \
     npm run build:prod && \
     mkdir /app && \
     mv package.json package-lock.json dist /app/ && \
