@@ -1,3 +1,6 @@
+meta:
+  version: 1.0.0
+  name: thirty-minutes-parse-server
 build:
   image: node:10.13-alpine
-  script: build.sh
+  script: compile_and_test.sh
