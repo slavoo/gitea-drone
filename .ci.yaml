@@ -1,6 +1,11 @@
 meta:
-  version: 1.0.0
   name: thirty-minutes-parse-server
+  version: 1.0.0
 build:
   image: node:10.13-alpine
   script: compile_and_test.sh
+test:
+  image: node:10.13-alpine
+  script: run_acceptance_tests.sh
+  env:
+    path: env
